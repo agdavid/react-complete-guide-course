@@ -5,6 +5,16 @@ import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
+  state = {
+    userName: 'Thomas'
+  };
+
+  userInputChangeHandler = (event) => {
+    this.setState({
+      userName: event.target.value
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -12,9 +22,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Assignment One</h1>
         </header>
-        <UserInput />
-        <UserOutput />
-        <UserOutput />
+        <UserInput changed={this.userInputChangeHandler} userName={this.state.userName}/>
+        <UserOutput userName={this.state.userName}/>
+        <UserOutput userName={this.state.userName}/>
       </div>
     );
   }
