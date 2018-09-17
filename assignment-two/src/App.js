@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import InputComponent from './InputComponent/InputComponent';
 import ValidationComponent from './ValidationComponent/ValidationComponent';
+import CharComponent from './CharComponent/CharComponent';
+import './CharComponent/CharComponent.css';
 
 // 1. [x] Create an input field (in App) with a change listener which outputs the length of the entered text below it (e.g., in a paragraph)
 // 2. [x] Create a new component (ValidationComponent) which receives the text length as a prop 
 // 3. [x] Inside ValidationComponent, output "Text too short" or "Text long enough" depending on the text length (e.g., 5 character minimum)
-// 4. Create another component (CharComponent) and style it as an inline box (display: inline-block, padding: 16px, text-align: center, margin: 16px, border: 1px solid black)
-// 5. Render a list of CharComponents where each CharComponent receives a different letter of the entered text (an initial input field as a prop)
+// 4. [x] Create another component (CharComponent) and style it as an inline box (display: inline-block, padding: 16px, text-align: center, margin: 16px, border: 1px solid black)
+// 5. [x] Render a list of CharComponents where each CharComponent receives a different letter of the entered text (an initial input field as a prop)
 // 6. When you click a CharComponent it should be removed from the entered text
 
 class App extends Component {
@@ -28,6 +30,20 @@ class App extends Component {
   }
 
   render() {
+    let characters = null;
+    
+    if ( this.state.currentInput !== null ) {
+     characters = (
+        <div>
+          {this.state.currentInput.split('').map( (l, index) => {
+            return (
+              <CharComponent className="CharComponent" letter={l} key={index}/>
+            );
+          })}
+        </div>
+      ); 
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -41,6 +57,7 @@ class App extends Component {
         <ValidationComponent 
           currentLength={this.state.currentLength}
         />
+        {characters}
       </div>
     );
   }
