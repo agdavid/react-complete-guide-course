@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
-import '../components/Persons/Person/Person.css';
+import Cockpit from '../components/Cockpit/Cockpit';
  
 class App extends Component {
   state = {
@@ -58,34 +58,24 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
     let persons = null;
 
     if ( this.state.showPersons ) {
       persons = (
-        <div>
-          <Persons 
-            persons={this.state.persons}
-            clicked={this.deletePersonHandler}
-            changed={this.nameChangeHandler}
-          />
-        </div>
+        <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandler}
+        />
       );
     }
 
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <button style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons
-        </button>
+        <Cockpit 
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler}
+        />
         {persons}
       </div>
     );
