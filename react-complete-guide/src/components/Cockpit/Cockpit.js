@@ -12,7 +12,7 @@ const cockpit = (props) => {
 
     return (
         <div>
-            <h1>Hi, I'm a React App</h1>
+            <h1>Hi, I'm the simple app for {props.appTitle}</h1>
             <button style={style}
             onClick={props.clicked}>Toggle Persons
             </button>
