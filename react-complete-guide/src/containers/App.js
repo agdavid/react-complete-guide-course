@@ -22,7 +22,8 @@ class App extends Component {
         age: 26
       }
     ],
-    showPersons: false
+    showPersons: false,
+    authenticated: false
   };
 
   nameChangeHandler = (event, personId) => {
@@ -56,6 +57,10 @@ class App extends Component {
     })
   }
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  }
+
   render() {
 
     let persons = null;
@@ -66,6 +71,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangeHandler}
+          isAuthenticated={this.state.authenticated}
         />
       );
     }
@@ -75,6 +81,7 @@ class App extends Component {
         <Cockpit 
           appTitle={this.props.title}
           persons={this.state.persons}
+          login={this.loginHandler}
           clicked={this.togglePersonsHandler}
         />
         {persons}

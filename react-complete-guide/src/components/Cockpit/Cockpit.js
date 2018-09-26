@@ -14,9 +14,10 @@ const cockpit = (props) => {
     return (
         <Aux>
             <h1>Hi, I'm the simple app for {props.appTitle}</h1>
-            <button style={style}
-            onClick={props.clicked}>Toggle Persons
-            </button>
+            <button 
+            style={style}
+            onClick={props.clicked}>Toggle Persons</button>
+            <button onClick={props.login}>Log In</button>
         </Aux>
         
     );

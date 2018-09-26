@@ -19,8 +19,9 @@ class Person extends Component {
 
     render() {
         return (
-            <div onClick={this.props.click} className="Person">
-                <p>I'm {this.props.name} and {this.props.age} years old!</p>
+            <div className="Person">
+                { this.props.authenticated ? <p>I'm Authenticated</p> : null }
+                <p onClick={this.props.click} >I'm {this.props.name} and {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
                 <input 
                 type="text"
