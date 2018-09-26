@@ -4,9 +4,16 @@ import './Person.css';
 
 class Person extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.inputElement = React.createRef();
+
+    }
+
     componentDidMount () {
         if (this.props.position === 0) {
-            this.inputElement.focus();
+            this.inputElement.current.focus();
         }
     }
 
@@ -17,7 +24,7 @@ class Person extends Component {
                 <p>{this.props.children}</p>
                 <input 
                 type="text"
-                ref={(inp)=>{ this.inputElement = inp}}
+                ref={this.inputElement}
                 onChange={this.props.changed} 
                 value={this.props.name} />
             </div>
