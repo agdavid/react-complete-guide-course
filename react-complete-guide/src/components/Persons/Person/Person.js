@@ -3,12 +3,23 @@ import PropTypes from 'prop-types';
 import './Person.css';
 
 class Person extends Component {
+
+    componentDidMount () {
+        if (this.props.position === 0) {
+            this.inputElement.focus();
+        }
+    }
+
     render() {
         return (
             <div onClick={this.props.click} className="Person">
                 <p>I'm {this.props.name} and {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
+                <input 
+                type="text"
+                ref={(inp)=>{ this.inputElement = inp}}
+                onChange={this.props.changed} 
+                value={this.props.name} />
             </div>
         );
     }
